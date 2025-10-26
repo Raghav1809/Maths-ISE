@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modulo Arithmetic - Interactive Learning Experience</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .modular-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid;
+            opacity: 0.7;
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .theme-light {
+            --bg-primary: #f0f9ff;
+            --bg-secondary: #e0f2fe;
+            --text-primary: #0c4a6e;
+            --accent: #0ea5e9;
+            --card-bg: #ffffff;
+        }
+        
+        .theme-dark {
+            --bg-primary: #0c1427;
+            --bg-secondary: #131c31;
+            --text-primary: #dbeafe;
+            --accent: #38bdf8;
+            --card-bg: #1e293b;
+        }
+        
+        .theme-high-contrast {
+            --bg-primary: #000000;
+            --bg-secondary: #111111;
+            --text-primary: #ffffff;
+            --accent: #ffff00;
+            --card-bg: #222222;
+        }
+        
+        .current-theme {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+        }
+        
+        .card {
+            background-color: var(--card-bg);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-primary {
+            background-color: var(--accent);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            opacity: 0.9;
+            transform: scale(1.05);
+        }
+        
+        .property-passed {
+            background-color: #4ade80;
+        }
+        
+        .property-failed {
+            background-color: #f87171;
+        }
+        
+        .table-cell {
+            transition: all 0.5s ease;
+            transform: scale(0);
+        }
+        
+        .table-cell.show {
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body class="min-h-screen current-theme">
+    <!-- Animated Background Elements -->
+    <div id="background-elements" class="fixed inset-0 overflow-hidden pointer-events-none">
+        <!-- Modular rings will be dynamically added here -->
+    </div>
+    
+    <!-- Theme Switcher -->
+    <div class="fixed top-4 right-4 z-50">
+        <div class="flex items-center space-x-2 bg-white/20 backdrop-blur-sm rounded-full p-2">
+            <button id="theme-light" class="w-8 h-8 rounded-full bg-blue-200"></button>
+            <button id="theme-dark" class="w-8 h-8 rounded-full bg-gray-800"></button>
+            <button id="theme-high-contrast" class="w-8 h-8 rounded-full bg-black border-2 border-yellow-400"></button>
+        </div>
+    </div>
+    
+    <!-- Main Content Container -->
+    <div id="app" class="container mx-auto px-4 py-8 relative z-10">
+        <!-- Welcome Page -->
+        <div id="welcome-page" class="min-h-screen flex flex-col items-center justify-center text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 animate-fade-in-down">
+                Modulo Arithmetic – Interactive Learning Experience
+            </h1>
+            <p class="text-xl md:text-2xl mb-2 animate-fade-in-down delay-100">
+                By Raghav Dattawadkar, Ashish Naikwade, and Naman Bharsakale
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 my-12 max-w-4xl w-full">
+                <div class="card p-8 rounded-2xl shadow-lg">
+                    <div class="text-5xl mb-4">➕</div>
+                    <h2 class="text-2xl font-semibold mb-4">Addition Modulo</h2>
+                    <p class="mb-6">Explore how numbers wrap around in modular addition</p>
+                </div>
+                
+                <div class="card p-8 rounded-2xl shadow-lg">
+                    <div class="text-5xl mb-4">✖</div>
+                    <h2 class="text-2xl font-semibold mb-4">Multiplication Modulo</h2>
+                    <p class="mb-6">Discover patterns in modular multiplication</p>
+                </div>
+            </div>
+            
+            <div class="flex flex-wrap justify-center gap-4 mt-8">
+                <button id="start-btn" class="btn-primary px-8 py-4 rounded-full text-xl font-semibold">
+                    Start Learning
+                </button>
+                <button id="theory-btn" class="px-8 py-4 rounded-full text-xl font-semibold border-2 border-current">
+                    Learn Theory
+                </button>
+            </div>
+        </div>
+        
+        <!-- Other pages will be added dynamically -->
+    </div>
+    
+    <script src="js/main_complete.js"></script>
+</body>
+</html>
